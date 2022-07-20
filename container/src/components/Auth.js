@@ -1,8 +1,8 @@
 import React, { useRef, useEffect } from "react";
-import { mount } from 'marketing/MarketingApp'
+import { mount } from 'auth/authForm'
 
 
-const Marketing = ({ history })=>{
+const Auth = ({ history, signIn })=>{
   const ref = useRef(null)
   const changeBrowserHistory = (nextPathName)=>{
     const pathname = history.location.pathname
@@ -12,10 +12,11 @@ const Marketing = ({ history })=>{
   }
 
   useEffect(()=>{
-    const changeMemoryHistory = mount(ref.current, {changeBrowserHistory,initialPath:history.location.pathname})
+    const changeMemoryHistory = mount(ref.current, {changeBrowserHistory, initialPath:history.location.pathname, signIn})
     history.listen((location)=>changeMemoryHistory(location.pathname))
   },[])
+
   return <div ref={ref}/>
 }
 
-export default Marketing
+export default Auth

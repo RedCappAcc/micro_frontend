@@ -1,0 +1,15 @@
+version: "3.8"
+
+services:
+  mfe-app:
+    container_name: mfe-app_root
+    image: mfe-app_root
+    build:
+      context: .
+      dockerfile: docker/development/Dockerfile
+    ports:
+      - "0.0.0.0:8080:8080"
+    volumes:
+      - ./src:/app/src
+    environment:
+      CHOKIDAR_USEPOLLING: "true"

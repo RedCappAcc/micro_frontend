@@ -1,0 +1,15 @@
+version: "3.8"
+
+services:
+  dashboard-app:
+    container_name: dashboard-app_dev
+    image: dashboard-app_dev
+    build:
+      context: .
+      dockerfile: docker/development/Dockerfile
+    ports:
+      - "0.0.0.0:8083:8083"
+    volumes:
+      - ./src:/app/src
+    environment:
+      CHOKIDAR_USEPOLLING: "true"

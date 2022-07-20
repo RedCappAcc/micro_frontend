@@ -1,0 +1,15 @@
+version: "3.8"
+
+services:
+  marketing-app:
+    container_name: marketing-app_dev
+    image: marketing-app_dev
+    build:
+      context: .
+      dockerfile: docker/development/Dockerfile
+    ports:
+      - "0.0.0.0:8081:8081"
+    volumes:
+      - ./src:/app/src
+    environment:
+      CHOKIDAR_USEPOLLING: "true"
